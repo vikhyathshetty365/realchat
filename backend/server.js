@@ -1,0 +1,15 @@
+const express = require('express')
+const userRoute = require('./routes/userRoute')
+const chatRoute = require('./routes/chatRoute')
+const messageRoute = require('./routes/messageRoute')
+const app = express()
+const Db = require('./config/db')
+app.use(express.json())
+
+Db()
+app.use('/api/v1/user', userRoute)
+app.use('/api/v1/chat', chatRoute)
+app.use('/api/v1/message', messageRoute)
+app.listen(5000, () => {
+    console.log('running on port 5000')
+})
